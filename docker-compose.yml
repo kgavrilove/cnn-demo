@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  your_network:
+    build:
+      context: ./
+      dockerfile: ./docker/network/Dockerfile
+    volumes:
+      - ./app:/app
+      - ./CADB_Dataset:/CADB_Dataset
+
+  tensorboard:
+    build:
+      context: ./docker/tensorboard
+      dockerfile: Dockerfile
+    volumes:
+      - ./logs:/logs
+    ports:
+      - "6006:6006"
